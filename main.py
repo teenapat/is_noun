@@ -1,8 +1,17 @@
 import os
 from fastapi import FastAPI
 from pythainlp.tag import pos_tag
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Change this to your frontend URL if needed
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/is_noun/{word}")
 async def is_noun(word: str):
