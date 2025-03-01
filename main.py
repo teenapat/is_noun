@@ -7,6 +7,6 @@ app = FastAPI()
 async def is_noun(word: str):
     tags = pos_tag([word], corpus="orchid")
     for w, tag in tags:
-        if tag == "NCMN":  # NCMN = คำนามใน Thai POS Tagging
+        if tag == "NCMN":
             return {"word": word, "is_noun": True}
     return {"word": word, "is_noun": False}
